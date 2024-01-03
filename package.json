@@ -1,0 +1,15 @@
+{
+  "devDependencies": {
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "scripts": {
+    "build": "webpack --mode=production",
+    "run": "webpack --mode=development && cp src/html/index.html dist && npx -y light-server --serve ./dist --open"
+  },
+  "dependencies": {
+    "gridstack": "^10.0.1"
+  }
+}
