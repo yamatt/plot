@@ -3,7 +3,6 @@ export default class Panel {
     #youtube_video_id_regex = /.+(?<video_id>[^"&?\/\s]{11})$/i;
 
     #form: HTMLFormElement;
-    #iframe: HTMLElement;
 
     get form() {
         if (!this.#form) {
