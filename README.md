@@ -21,6 +21,7 @@ npm run run
 ## To Do:
 
 * Store dashboard configuration in URL
+* Add buttons to move and remove panels
 
 ## Attribution
 
