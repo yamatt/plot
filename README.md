@@ -18,7 +18,6 @@ npm run run
 
 ## To Do:
 
-* Get YouTube to work
 * Store dashboard configuration in URL
 
 ## Attribution
