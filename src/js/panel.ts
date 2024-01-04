@@ -1,13 +1,22 @@
 export default class Panel {
 
     #youtube_video_id_regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/gi;
+
     #form: HTMLFormElement;
+    #iframe: HTMLElement;
 
     get form() {
         if (!this.#form) {
             this.#form = document.getElementsByTagName("form")[0];
         }
         return this.#form;
+    }
+
+    get iframe() {
+        if (!this.#iframe) {
+            this.#iframe = document.getElementsByTagName("iframe")[0];
+        }
+        return this.#iframe;
     }
 
     setup() {
@@ -20,7 +29,11 @@ export default class Panel {
             if(url.startsWith("https://www.youtube.com/watch?v=")) {
                 const video_id = url.match(this.#youtube_video_id_regex);
                 const video_url = `https://www.youtube.com/embed/${video_id}?enablejsapi=1`;
-                document.location.href = video_url;
+
+                this.#iframe = document.createElement("iframe");
+                this.#iframe.setAttribute("allow", "autoplay; encrypted-media;");
+                this.#iframe.setAttribute("src", video_url);
+                this.#iframe.classList.remove("hidden");
             }
             else {
                 document.location.href = url;
