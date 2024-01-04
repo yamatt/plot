@@ -28,11 +28,9 @@ export default class Panel {
 
             if(url.startsWith("https://www.youtube.com/watch?v=")) {
                 const video_id = url.match(this.#youtube_video_id_regex);
-                const video_url = `https://www.youtube.com/embed/${video_id}?enablejsapi=1`;
-
-                this.iframe.setAttribute("allow", "autoplay; encrypted-media;");
-                this.iframe.setAttribute("src", video_url);
-                this.iframe.classList.remove("hidden");
+                const video_url = `https://www.youtube.com/embed/${video_id}?si=gqA_FiEwiqmI5F--`; // https://www.youtube.com/embed/w9uJg68CV4g?si=gqA_FiEwiqmI5F--
+                console.log("hi", video_url);
+                document.location.href = video_url;
             }
             else {
                 document.location.href = url;
