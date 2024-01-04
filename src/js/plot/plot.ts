@@ -1,6 +1,6 @@
 import Interactive from './interactive'
 
-import Grid from './features/grid';
+import Grid from './grid';
 
 export default class Plot {
     #interactive: Interactive;
