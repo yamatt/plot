@@ -2,6 +2,7 @@ const path = require('path');
 
 const defaults = {
   entry: './src/js/index.ts',
+  devtools: 'source-map',
   resolve: {
     extensions: [".ts", ".js"],
   },
@@ -21,8 +22,5 @@ const defaults = {
 };
 
 module.exports = (env, argv) => {
-  if (argv.mode === 'development') {
-    defaults.devtool = 'source-map';
-  }
   return defaults;
 };
