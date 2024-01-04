@@ -1,4 +1,5 @@
-import Plot from './plot/plot'
+import Plot from './plot'
+import Panel from './panel';
 
 (function () {
     const page = document.getElementsByTagName("body")[0].dataset.type;
@@ -7,6 +8,7 @@ import Plot from './plot/plot'
         plot.setup();
     }
     else if (page == "panel") {
-        // setup panel
+        const panel = new Panel();
+        panel.setup()
     }
 })();

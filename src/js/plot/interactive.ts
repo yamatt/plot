@@ -1,4 +1,4 @@
-import Plot from './plot'
+import Plot from '../plot'
 
 import { M } from '@materializecss/materialize';
 
