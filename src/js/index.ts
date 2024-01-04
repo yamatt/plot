@@ -9,6 +9,6 @@ import Panel from './panel';
     }
     else if (page == "panel") {
         const panel = new Panel();
-        panel.setup()
+        panel.setup();
     }
 })();

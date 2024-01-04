@@ -21,7 +21,7 @@ export default class Plot {
     }
 
     setup() {
-        this.interactive.setup()
-        this.grid.setup()
+        this.interactive.setup();
+        this.grid.setup();
     }
 }
