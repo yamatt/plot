@@ -1,0 +1,41 @@
+---
+name: Build static website
+on:
+  push:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Create branch directories
+        run: mkdir -p main public
+      - uses: actions/checkout@v4
+        with:
+          path: main
+      - uses: actions/checkout@v4
+        with:
+          ref: public
+          path: public
+      - name: Install NodeJS
+        uses: actions/setup-node@v4
+        with:
+          node-version: '12'
+      - name: Install build dependencies
+        run: npm install --dev
+        working-directory: ./main
+      - name: Package distributables
+        run: webpack --mode=production
+        working-directory: ./main
+      - name: Copy files to public branch
+        run: |
+          cp main/src/html/*.html public
+          cp main/src/css/main.css public
+          cp main/dist/* public
+          echo $GITHUB_SHA > public/release
+      - name: Commit back updated files to public branch
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          repository: public
+          commit_message: Updating page
