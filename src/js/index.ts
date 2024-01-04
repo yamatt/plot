@@ -6,6 +6,7 @@ import Panel from './panel';
     if(page == "main") {
         const plot = new Plot();
         plot.setup();
+        plot.grid.add_panel();
     }
     else if (page == "panel") {
         const panel = new Panel();
