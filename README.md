@@ -12,6 +12,8 @@ You can then share your dashboard by copying the URL and sending that to someone
 
 ## Run Locally
 
+Note that a lot of sites won't work if you run locally as they require HTTPS.
+
 ```bash
 npm run run
 ```
