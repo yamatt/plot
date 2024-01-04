@@ -32,6 +32,7 @@ jobs:
         run: |
           cp main/src/html/*.html public
           cp main/src/css/main.css public
+          cp main/static/favicon.png public
           cp main/dist/* public
           echo $GITHUB_SHA > public/release
       - name: Commit back updated files to public branch
