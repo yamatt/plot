@@ -7,3 +7,15 @@ iframe.panel {
 .non-interactive {
     pointer-events: none;
 }
+
+.hidden {
+    display: none;
+}
+
+.fill-h {
+    height: 100%;
+}
+
+.fill-w {
+    width: 100%;
+}
