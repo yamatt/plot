@@ -12,13 +12,6 @@ export default class Panel {
         return this.#form;
     }
 
-    get iframe() {
-        if (!this.#iframe) {
-            this.#iframe = document.getElementsByTagName("iframe")[0];
-        }
-        return this.#iframe;
-    }
-
     setup() {
         this.form.addEventListener("submit", (e) => {
             e.preventDefault();
@@ -28,8 +21,12 @@ export default class Panel {
 
             if(url.startsWith("https://www.youtube.com/watch?v=")) {
                 const video_id = url.match(this.#youtube_video_id_regex);
-                const video_url = `https://www.youtube.com/embed/${video_id}?si=gqA_FiEwiqmI5F--`; // https://www.youtube.com/embed/w9uJg68CV4g?si=gqA_FiEwiqmI5F--
-                window.open(video_url, '_self');
+                const video_url = `https://www.youtube.com/embed/${video_id}`;
+                
+                const iframe = document.createElement("iframe");
+                iframe.setAttribute("allow", "autoplay; encrypted-media;");
+                iframe.setAttribute("src", video_url + "?enablejsapi=1");
+                this.form.appendChild(iframe);
             }
             else {
                 document.location.href = url;
