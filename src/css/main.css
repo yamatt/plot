@@ -3,3 +3,7 @@ iframe.panel {
     height: 100%;
     border: 0px;
 }
+
+.non-interactive {
+    pointer-events: none;
+}

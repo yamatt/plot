@@ -1,4 +1,4 @@
-import { GridStack, GridStackOptions, GridStackWidget } from 'gridstack';
+import { GridStack, GridStackOptions, GridItemHTMLElement } from 'gridstack';
 
 export default class Grid {
     DEFAULT_GRID_OPTIONS = <GridStackOptions> {
@@ -9,7 +9,7 @@ export default class Grid {
     DEFAULT_WIDGET = {
         w: 4, 
         h: 2,
-        content: '<iframe class="panel" src=".">'
+        content: '<iframe class="panel" src="./new-panel.html">'
     }
 
     #grid: GridStack;
@@ -26,6 +26,13 @@ export default class Grid {
     }
 
     setup() {
-
+        this.grid.on('resizestart', (e: Event, el: GridItemHTMLElement) => {
+            const iframe = <Element> el.childNodes[0].childNodes[0];
+            iframe.classList.add("non-interactive");
+        });
+        this.grid.on('resizestop', (e: Event, el: GridItemHTMLElement) => {
+            const iframe = <Element> el.childNodes[0].childNodes[0];
+            iframe.classList.remove("non-interactive");
+        });
     }
 }

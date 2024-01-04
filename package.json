@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "webpack --mode=production",
-    "run": "webpack --mode=development && cp src/html/index.html dist && cp src/css/main.css dist && npx -y light-server --serve ./dist --open"
+    "run": "webpack --mode=development && cp src/html/*.html dist && cp src/css/main.css dist && npx -y light-server --serve ./dist --open"
   },
   "dependencies": {
     "@materializecss/materialize": "^2.0.3",
