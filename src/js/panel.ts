@@ -30,7 +30,6 @@ export default class Panel {
                 const video_id = url.match(this.#youtube_video_id_regex);
                 const video_url = `https://www.youtube.com/embed/${video_id}?enablejsapi=1`;
 
-                this.#iframe = document.createElement("iframe");
                 this.#iframe.setAttribute("allow", "autoplay; encrypted-media;");
                 this.#iframe.setAttribute("src", video_url);
                 this.#iframe.classList.remove("hidden");
