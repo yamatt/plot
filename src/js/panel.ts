@@ -29,8 +29,7 @@ export default class Panel {
             if(url.startsWith("https://www.youtube.com/watch?v=")) {
                 const video_id = url.match(this.#youtube_video_id_regex);
                 const video_url = `https://www.youtube.com/embed/${video_id}?si=gqA_FiEwiqmI5F--`; // https://www.youtube.com/embed/w9uJg68CV4g?si=gqA_FiEwiqmI5F--
-                console.log("hi", video_url);
-                document.location.href = video_url;
+                window.open(video_url, '_self');
             }
             else {
                 document.location.href = url;
