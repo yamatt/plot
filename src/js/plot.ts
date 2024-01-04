@@ -15,9 +15,13 @@ export default class Plot {
 
     get grid() {
         if (!this.#grid) {
-            this.#grid = new Grid();
+            this.#grid = new Grid(this);
         }
         return this.#grid;
+    }
+
+    update_url(current_state: string) {
+        window.location.hash = current_state;
     }
 
     setup() {

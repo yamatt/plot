@@ -1,6 +1,10 @@
-import { GridStack, GridStackOptions, GridItemHTMLElement } from 'gridstack';
+import Plot from '../plot'
+
+import { GridStack, GridStackOptions, GridStackWidget, GridItemHTMLElement } from 'gridstack';
 
 export default class Grid {
+    #parent: Plot;
+
     DEFAULT_GRID_OPTIONS = <GridStackOptions> {
         column: 12,
         alwaysShowResizeHandle: 'mobile'
@@ -14,6 +18,10 @@ export default class Grid {
 
     #grid: GridStack;
 
+    constructor(parent: Plot) {
+        this.#parent = parent;
+    }
+
     get grid() {
         if (!this.#grid) {
             this.#grid = GridStack.init(this.DEFAULT_GRID_OPTIONS);
@@ -23,12 +31,30 @@ export default class Grid {
 
     add_panel() {
         this.grid.addWidget(this.DEFAULT_WIDGET);
+        this.update_url();
+    }
+
+    get current_state() {
+        const data = <GridStackWidget[]> this.grid.save();
+        return data;
+    }
+
+    load_state(options: GridStackWidget[]) {
+        this.grid.removeAll();
+        this.grid.load(options);
+    }
+
+    update_url() {
+        this.#parent.update_url(JSON.stringify(this.current_state));
     }
 
     setup() {
         this.grid.on('resizestart', (e: Event, el: GridItemHTMLElement) => {
             const iframe = <Element> el.childNodes[0].childNodes[0];
             iframe.classList.add("non-interactive");
+        });
+        this.grid.on('resize', (e: Event, el: GridItemHTMLElement) => {
+            this.update_url();
         });
         this.grid.on('resizestop', (e: Event, el: GridItemHTMLElement) => {
             const iframe = <Element> el.childNodes[0].childNodes[0];
