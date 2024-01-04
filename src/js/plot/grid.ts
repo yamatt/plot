@@ -9,7 +9,7 @@ export default class Grid {
     DEFAULT_WIDGET = {
         w: 4, 
         h: 2,
-        content: '<iframe class="panel" allow="autoplay; encrypted-media;" src="./new-panel.html">'
+        content: '<iframe class="no-border fill-h fill-w" allow="autoplay; encrypted-media;" src="./new-panel.html">'
     }
 
     #grid: GridStack;
